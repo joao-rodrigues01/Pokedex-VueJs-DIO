@@ -33,11 +33,9 @@
 		width: 100%;
 		clip-path: polygon(0 0, 100% 0, 100% 41px, 270px 41px, 200px 100%, 0 100%);
 		z-index: 1;
-
 		@media (min-width: $viewport-medium) {
 			width: calc(50% + 20px);
 		}
-
 		.container {
 			display: flex;
 			padding: 10px;

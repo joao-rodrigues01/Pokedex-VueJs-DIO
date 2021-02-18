@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import List from '../List/List.vue';
+import List from '@/components/List/List.vue';
 
 export default {
 	name: 'LeftPanelContent',

@@ -27,6 +27,7 @@ export default {
 
 		@media (min-width: $viewport-medium) {
 			max-height: 72%;
+			border: 20px solid color(white);
 		}
 	}
 </style>

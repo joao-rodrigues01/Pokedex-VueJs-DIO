@@ -20,8 +20,8 @@
 			LeftPanel,
 			RightPanel,
 			Divider,
-		}
-}
+		},
+	};
 </script>
 
 <style lang="scss" scoped>
@@ -39,7 +39,7 @@
 		}
 
 		&--left,
-		&--rigth {
+		&--right {
 			position: relative;
 			display: flex;
 			height: 50%;
