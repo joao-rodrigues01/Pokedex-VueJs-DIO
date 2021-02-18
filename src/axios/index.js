@@ -1,6 +1,6 @@
 import Factory from './factory';
 
-const coreApiUrl = '';
-const commonIntstance = Factory(coreApiUrl);
+const coreApiUrl = 'https://pokeapi.co/api/v2';
+const commonInstance = Factory(coreApiUrl);
 
-export default commonIntstance;
+export default commonInstance;

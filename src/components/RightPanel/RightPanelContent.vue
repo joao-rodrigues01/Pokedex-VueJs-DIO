@@ -1,22 +1,47 @@
 <template>
-	<form class="search">
+	<div class="search">
 		<label for="search" class="search__label text--white bg--black">
-			<h3 class="search__label--text">E.g.: Charizard</h3>
-			<input id="search" type="text" class="search__input">
+			<h3 class="search__label--text">E.g.: Charizard | 6</h3>
+			<input
+				id="search"
+				v-model.trim="name"
+				type="text"
+				class="search__input"
+				@keyup.enter="searchPokemon"
+			>
 		</label>
 
-		<button class="search__button bg--gray text--yellow" @click.prevent>
-			Search
-		</button>
-	</form>
+		<div class="buttons">
+			<button class="btn btn--clear" @click.prevent="clear">
+				Clear
+			</button>
+			<button class="btn btn--search bg--gray text--yellow" @click.prevent="searchPokemon">
+				Search
+			</button>
+		</div>
+	</div>
 </template>
 
 <script>
+	import { actions, mutations } from '@/store';
 
-
-export default {
-	name: 'RightPanelContent',
-}
+	export default {
+		name: 'RightPanelContent',
+		data() {
+			return {
+				name: '',
+			};
+		},
+		methods: {
+			clear() {
+				this.name = '';
+				mutations.resetList();
+			},
+			async searchPokemon() {
+				await actions.searchPokemon(this.name);
+			},
+		},
+	};
 </script>
 
 <style lang="scss" scoped>
@@ -26,12 +51,10 @@ export default {
 		justify-content: space-between;
 		flex: 1;
 		transform: rotateX(-180deg);
-
-		@media(min-width: $viewport-medium) {
+		@media (min-width: $viewport-medium) {
 			transform: rotateY(-180deg);
 			padding-top: 50px;
 		}
-
 		&__label {
 			display: flex;
 			flex-direction: column;
@@ -39,41 +62,45 @@ export default {
 			width: 100%;
 			height: 50%;
 			padding: 6px 12px 12px;
-
-			@media(min-width: $viewport-medium) {
+			@media (min-width: $viewport-medium) {
 				height: 36%;
 				padding: 12px 24px 24px;
 			}
 		}
-
 		&__input {
 			color: inherit;
 			background: transparent;
 			border: none;
 			border-bottom: 2px solid color(white);
 			padding: 4px 8px;
-			outline: none;
-
-			@media(min-width: $viewport-medium) {
+			@media (min-width: $viewport-medium) {
 				padding: 8px;
 			}
 		}
-
-		&__button {
-			align-self: flex-end;
-			width: 120px;
-			height: 50px;
-			border: 4px solid color(black);
-			border-radius: 8px;
-			cursor: pointer;
-			font-size: 18px;
-			font-weight: bold;
-
-			@media(min-width: $viewport-medium) {
-				width: 160px;
-				height: 60px;
+		.buttons {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			.btn {
+				border-radius: 8px;
+				font-size: 18px;
+				font-weight: bold;
+				cursor: pointer;
+				&--clear {
+					width: 80px;
+					padding: 8px;
+					margin-right: 16px;
+					border: none;
+				}
+				&--search {
+					width: 120px;
+					padding: 15px;
+					border: 4px solid color(black);
+					@media (min-width: $viewport-medium) {
+						width: 160px;
+					}
+				}
 			}
+		}
 	}
-}
-
 </style>

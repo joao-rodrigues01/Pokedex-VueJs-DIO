@@ -4,11 +4,11 @@ const responseSuccessInterceptor = response => response.data;
 
 const responseErrorInterceptor = (error) => {
 	const response = error.response || error;
-	return Promise.reject(response.data || response);
+	return Promise.reject(response);
 };
 
 export {
 	requestInterceptor,
 	responseSuccessInterceptor,
-	responseSuccessInterceptor,
+	responseErrorInterceptor,
 };
