@@ -20,7 +20,7 @@
 
 - Para instalar as dependências use esse comando:
 ```
-yarn install
+yarn
 ```
 
 - Para iniciar o projeto no navegador utilize este comando:
